@@ -4,6 +4,7 @@ import os
 import requests
 
 from src.abstract_classes import API
+from src.class_vacancy import Vacancy
 
 
 class SuperJobAPI(API):
@@ -57,4 +58,6 @@ class SuperJobAPI(API):
         return work_data
 
     def add_profession(self, value: str) -> None:
-        pass
+        """Метод для добавления параметра 'keyword' в param."""
+        self.param['keyword'] = value
+        Vacancy.request_text = value
