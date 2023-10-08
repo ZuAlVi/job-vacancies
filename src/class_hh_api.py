@@ -68,7 +68,6 @@ class HeadHunterAPI(API):
                          'salary_currency': salary_currency,
                          'url': item['apply_alternate_url'],
                          'employer': item['employer']['name']
-                         # 'date_published': date_published,
                          }
             work_data.append(work_dict)
         return work_data
