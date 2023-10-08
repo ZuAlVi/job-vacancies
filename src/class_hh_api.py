@@ -3,6 +3,7 @@ import copy
 import requests
 
 from src.abstract_classes import API
+from src.class_vacancy import Vacancy
 
 
 class HeadHunterAPI(API):
@@ -30,7 +31,9 @@ class HeadHunterAPI(API):
             return None
 
     def add_profession(self, value):
-        pass
+        """Метод для добавления параметра 'text' в param."""
+        self.param['text'] = value
+        Vacancy.request_text = value
 
     def format_data(self, data):
         pass
