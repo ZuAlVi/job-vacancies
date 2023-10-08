@@ -34,7 +34,27 @@ class SuperJobAPI(API):
             return None
 
     def format_data(self, data: list) -> list:
-        pass
+        """Метод для отбора необходимых данных."""
+
+        work_data = []
+        for item in data:
+            if item['payment_to'] == 0:
+                salary = item['payment_from']
+            else:
+                salary = item['payment_to']
+            requirement = item['candidat']
+            requirement = requirement.replace('\n', ' ')
+            work_dict = {'name': item['profession'],
+                         'requirement': requirement,
+                         'responsibility': item['catalogues'][0]['title'],
+                         'salary': salary,
+                         'salary_currency': 'руб',
+                         'url': item['link'],
+                         'employer': item['firm_name'],
+                         # 'date_published': date_published,
+                         }
+            work_data.append(work_dict)
+        return work_data
 
     def add_profession(self, value: str) -> None:
         pass
