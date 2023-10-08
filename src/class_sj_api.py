@@ -1,6 +1,8 @@
 import copy
 import os
 
+import requests
+
 from src.abstract_classes import API
 
 
@@ -20,7 +22,16 @@ class SuperJobAPI(API):
         self.param = copy.deepcopy(self.param_default)
 
     def get_vacancies(self):
-        pass
+        """Получение информации о вакансиях с помощью параметров.
+                :return: list или None"""
+
+        headers = {'X-Api-App-Id': self.__SJ_API_KEY}
+
+        response = requests.get(self.__SJ_API_URL, headers=headers, params=self.param)
+        if response.status_code == 200:
+            return response.json()['objects']
+        else:
+            return None
 
     def format_data(self, data: list) -> list:
         pass
