@@ -32,3 +32,6 @@ class Vacancy:
         print(f'Ссылка на вакансию - {self.url}')
         print('~' * 118)
         print()
+
+    def __len__(self):
+        return len(Vacancy.all_vacancies)
