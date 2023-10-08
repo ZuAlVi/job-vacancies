@@ -35,3 +35,8 @@ class Vacancy:
 
     def __len__(self):
         return len(Vacancy.all_vacancies)
+
+    @classmethod
+    def clear_vacancies_list(cls) -> None:
+        """Метод для очистки атрибута класса 'all_vacancies'."""
+        cls.all_vacancies = []
