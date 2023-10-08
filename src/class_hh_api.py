@@ -1,5 +1,7 @@
 import copy
 
+import requests
+
 from src.abstract_classes import API
 
 
@@ -19,7 +21,13 @@ class HeadHunterAPI(API):
         self.param = copy.deepcopy(self.param_default)
 
     def get_vacancies(self):
-        pass
+        """Получение информации по API о вакансиях с помощью параметров.
+                :return: list или None"""
+        response = requests.get(self.__HH_API_URL, params=self.param)
+        if response.status_code == 200:
+            return response.json()['items']
+        else:
+            return None
 
     def add_profession(self, value):
         pass
