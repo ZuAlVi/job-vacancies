@@ -40,3 +40,12 @@ class Vacancy:
     def clear_vacancies_list(cls) -> None:
         """Метод для очистки атрибута класса 'all_vacancies'."""
         cls.all_vacancies = []
+
+    @classmethod
+    def reformat_data(cls) -> list:
+        """Метод для переделки атрибута класса 'all_vacancies'
+        в список словарей."""
+        reformat_data = []
+        for vacancy in cls.all_vacancies:
+            reformat_data.append(vacancy.__dict__)
+        return reformat_data
